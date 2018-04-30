@@ -26,10 +26,13 @@ def main():
         name = input('ID:')
         if name == 'exit':
             break        
-        profile_url = 'https://lol.moa.tw/summoner/show/'+name
-        stats_url = 'https://lol.moa.tw' + get_ajax_url(profile_url, stats_tag)
+        profile_url = 'https://lol.moa.tw/summoner/show/'+name        
         rank = get_webdata(profile_url,profile_tag)
-        rank = rank[0].text.split()
+        if not rank:
+            print('查無此名字')
+            continue
+        rank = rank[0].text.split()        
+        stats_url = 'https://lol.moa.tw' + get_ajax_url(profile_url, stats_tag)
         season = 3
         for i in range(0,len(rank),2):
             if rank[i+1] != '未參與積分':        
