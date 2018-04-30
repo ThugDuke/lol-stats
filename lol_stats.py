@@ -24,7 +24,7 @@ def main():
     var = 1
     while var == 1:
         name = input('ID:')
-        if name == 0:
+        if name == 'exit':
             break        
         profile_url = 'https://lol.moa.tw/summoner/show/'+name
         stats_url = 'https://lol.moa.tw' + get_ajax_url(profile_url, stats_tag)
